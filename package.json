@@ -4,6 +4,9 @@
   "description": "",
   "type": "module",
   "main": "joke-machine.js",
+  "bin": {
+    "joke-machine": "joke-machine.js"
+  },
   "scripts": {
     "start": "node joke-machine.js",
     "test": "echo \"Error: no test specified\" && exit 1"
