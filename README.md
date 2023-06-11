@@ -1,4 +1,6 @@
 # Joke-Machine
+Requires the latest dev branch of NodeJS v20
+
 Silly little node app that displays a joke.  
 This uses the free api http://jokeapi.dev.  
 Great to put as part of a shell logon script.
