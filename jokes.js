@@ -27,7 +27,7 @@ var Jokes = class {
     };
 
     get = async (category) => {
-        this.debug.log(`Fetching joke from: ${category}`);
+        this.debug.log(`Fetching joke, category: ${category}`);
         let data = await this.query(`joke/${category}`);
 
         if (data.joke) {
@@ -38,7 +38,16 @@ var Jokes = class {
         }
     };
 
-    list = async () => {
+    rand = async () => {
+        this.debug.log(`Fetching list of categories`);
+		let data = await this.query("categories");
+		const categories = data.categories.slice(1);
+
+		this.debug.log(`Categories: ${categories.join(", ")}`);
+		this.get(categories[Math.floor(Math.random()*categories.length)])
+	};
+
+	list = async () => {
         this.debug.log(`Fetching list of categories`);
         let data = await this.query("categories");
 

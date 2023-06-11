@@ -28,7 +28,7 @@ if (options.list && !options.get && !options.rand) {
     jokes.get(options.get);
 
 } else if (!options.list && !options.get) {
-    jokes.get('any');
+    jokes.rand();
 
 } else {
     if ((options.list==true && (options.get || options.rand==true)) || (options.get && options.rand==true)) {
