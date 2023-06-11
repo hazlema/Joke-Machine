@@ -1,7 +1,7 @@
 {
   "name": "joke-machine",
   "version": "1.0.0",
-  "description": "",
+  "description": "Display a joke from http://jokeapi.dev, great for your .bashrc scripts!",
   "type": "module",
   "main": "joke-machine.js",
   "bin": {
