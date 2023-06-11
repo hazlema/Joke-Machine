@@ -8,7 +8,7 @@ let jokes   = new Jokes()
 command
   .name('joke-machine')
   .description('Get a joke from http://jokeapi.dev')
-  .version('0.8.0')
+  .version('1.0.0')
   .option('-d, --debug', 'extra debugging', false)
   .option('-l, --list', 'list categories', false)
   .option('-g, --get <category>', 'get a joke', false)
