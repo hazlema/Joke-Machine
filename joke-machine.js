@@ -5,6 +5,26 @@ import chalk from 'chalk';
 let command = new Command()
 let jokes   = new Jokes()
 
+async function main() {
+	//console.log(await jokes.isCategory('pun'))
+
+	if (options.list && !options.get && !options.rand) {
+		jokes.list();
+	
+	} else if (!options.list && options.get && !options.rand){
+		if (!await jokes.get(options.get)) {
+			console.log(chalk.redBright("Invalid Category: ") + chalk.whiteBright(options.get))
+		}
+	} else if (!options.list && !options.get) {
+		jokes.rand();
+	
+	} else {
+		if ((options.list==true && (options.get || options.rand==true)) || (options.get && options.rand==true)) {
+			console.log(chalk.redBright("Argument Error: ") + chalk.whiteBright("Can not Combine these Operations (joke-machine --help)"))
+		}
+	}
+}
+	
 command
   .name('joke-machine')
   .description('Get a joke from http://jokeapi.dev')
@@ -21,17 +41,4 @@ if (options.debug) {
     jokes.debug.isDebug = true
 }
 
-if (options.list && !options.get && !options.rand) {
-    jokes.list();
-
-} else if (!options.list && options.get && !options.rand){
-    jokes.get(options.get);
-
-} else if (!options.list && !options.get) {
-    jokes.rand();
-
-} else {
-    if ((options.list==true && (options.get || options.rand==true)) || (options.get && options.rand==true)) {
-        console.log(chalk.redBright("Argument Error: ") + chalk.whiteBright("Can not Combine these Operations (joke-machine --help)"))
-    }
-}
+main()
