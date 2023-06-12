@@ -1,4 +1,4 @@
-import chalk from "chalk";
+import chalk from "chalk-template";
 
 class Debug {
     constructor() {
@@ -8,9 +8,7 @@ class Debug {
 
     log(message) {
         if (this.isDebug) {
-            console.log(
-                `${chalk.redBright(this.app)}: ${chalk.whiteBright(message)}`
-            );
+            console.log(chalk`{red ${this.app}} {white ${message}}`);
         }
     }
 }

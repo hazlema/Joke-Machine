@@ -1,5 +1,5 @@
 import axios from "axios";
-import chalk from "chalk";
+import chalk from "chalk-template";
 import { Debug } from "./debug.js";
 
 var Jokes = class {
@@ -46,9 +46,7 @@ var Jokes = class {
                     this.debug.log(`Categories: ` + categories.join(", "));
 
                     for (let test of categories) {
-                        this.debug.log(
-                            `Compare ${category.toLowerCase()} and ${test.toLowerCase()}`
-                        );
+                        this.debug.log(`Compare ${category.toLowerCase()} and ${test.toLowerCase()}`);
                         if (category.toLowerCase() === test.toLowerCase()) {
                             resolve(true);
                             return;
@@ -74,10 +72,10 @@ var Jokes = class {
             let data = await this.query(`joke/${category}`);
 
             if (data.joke) {
-                console.log(chalk.blueBright(data.joke));
+                console.log(chalk`{blue ${data.joke}}`);
             } else {
-                console.log(chalk.blueBright(data.setup));
-                console.log(chalk.yellowBright(data.delivery));
+                console.log(chalk`{blue ${data.setup}}`);
+                console.log(chalk`{red ${data.delivery}}`);
             }
         } else {
             this.debug.log(`Invalid Category`);
@@ -107,8 +105,7 @@ var Jokes = class {
 
         this.debug.log(`Categories: ${categories.join(", ")}`);
 
-        let category =
-            categories[Math.floor(Math.random() * categories.length)];
+        let category = categories[Math.floor(Math.random() * categories.length)];
         this.get(category, true); // Skip category check, we know this is valid
     };
 };
